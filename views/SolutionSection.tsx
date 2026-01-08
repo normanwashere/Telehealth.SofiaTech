@@ -102,7 +102,7 @@ const SolutionSection: React.FC = () => {
                             <div>
                                 <h3 className="text-3xl font-bold text-white mb-6">
                                     The Multiplier Effect: <br/>
-                                    <span className="text-emerald-400">Why 1 + 1 + 1 > 3</span>
+                                    <span className="text-emerald-400">Why 1 + 1 + 1 &gt; 3</span>
                                 </h3>
                                 <p className="text-slate-300 leading-relaxed mb-6">
                                     Most digital health projects fail because they treat these pillars as separate procurements. 
