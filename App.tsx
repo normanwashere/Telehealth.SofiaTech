@@ -8,6 +8,7 @@ import ProposalSection from './views/ProposalSection';
 import JustificationSection from './views/JustificationSection';
 import RoadmapSection from './views/RoadmapSection';
 import WinSection from './views/WinSection';
+import ScrollToTop from './components/ScrollToTop';
 import { LguData } from './types';
 import { ALL_LGU_DATA } from './constants';
 
@@ -26,6 +27,7 @@ const App: React.FC = () => {
 
     return (
         <Router>
+            <ScrollToTop />
             <Routes>
                 <Route element={<Layout />}>
                     <Route path="/" element={<VisionSection onNavigate={() => { }} />} />
