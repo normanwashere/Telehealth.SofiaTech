@@ -24,10 +24,10 @@ const SolutionSection: React.FC = () => {
                 </div>
 
                 {/* The 3 Pillars */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-16">
+                <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 lg:gap-8 mb-16 px-4 -mx-4 pb-8 md:grid md:grid-cols-3 md:overflow-visible md:pb-0 md:px-0 md:mx-0 no-scrollbar">
                     {/* Pillar 1 */}
                     <div
-                        className="glass glass-hover p-8 rounded-3xl border border-emerald-500/20 relative group cursor-pointer overflow-hidden flex flex-col animate-slide-up"
+                        className="min-w-[85vw] md:min-w-0 snap-center glass glass-hover p-8 rounded-3xl border border-emerald-500/20 relative group cursor-pointer overflow-hidden flex flex-col animate-slide-up"
                         style={{ animationDelay: '100ms', opacity: 0, animationFillMode: 'forwards' }}
                         onClick={() => setActiveModal('pillar1')}
                     >
@@ -51,7 +51,7 @@ const SolutionSection: React.FC = () => {
 
                     {/* Pillar 2 */}
                     <div
-                        className="glass glass-hover p-8 rounded-3xl border border-orange-500/20 relative group cursor-pointer overflow-hidden flex flex-col animate-slide-up"
+                        className="min-w-[85vw] md:min-w-0 snap-center glass glass-hover p-8 rounded-3xl border border-orange-500/20 relative group cursor-pointer overflow-hidden flex flex-col animate-slide-up"
                         style={{ animationDelay: '200ms', opacity: 0, animationFillMode: 'forwards' }}
                         onClick={() => setActiveModal('pillar2')}
                     >
@@ -75,7 +75,7 @@ const SolutionSection: React.FC = () => {
 
                     {/* Pillar 3 */}
                     <div
-                        className="glass glass-hover p-8 rounded-3xl border border-sky-500/20 relative group cursor-pointer overflow-hidden flex flex-col animate-slide-up"
+                        className="min-w-[85vw] md:min-w-0 snap-center glass glass-hover p-8 rounded-3xl border border-sky-500/20 relative group cursor-pointer overflow-hidden flex flex-col animate-slide-up"
                         style={{ animationDelay: '300ms', opacity: 0, animationFillMode: 'forwards' }}
                         onClick={() => setActiveModal('pillar3')}
                     >

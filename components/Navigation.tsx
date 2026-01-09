@@ -41,15 +41,15 @@ const Navigation: React.FC = () => {
                 </div>
 
                 {/* Nav Buttons */}
-                <nav className="max-w-screen-2xl mx-auto px-2">
-                    <ul className="flex justify-between md:justify-center items-center md:gap-2">
+                <nav className="max-w-screen-2xl mx-auto px-2 overflow-x-auto no-scrollbar">
+                    <ul className="flex md:justify-center items-center md:gap-2 min-w-max md:min-w-0">
                         {navItems.map((item) => {
                             const isActive = isPathActive(item.path);
                             return (
                                 <li key={item.id} className="flex-1 md:flex-none">
                                     <Link
                                         to={item.path}
-                                        className="relative w-full md:w-28 h-20 flex flex-col items-center justify-center group focus:outline-none"
+                                        className="relative w-20 md:w-28 h-20 flex flex-col items-center justify-center group focus:outline-none"
                                     >
                                         {/* Active Light Splash */}
                                         <div className={`absolute inset-x-0 top-0 h-full bg-gradient-to-b from-emerald-500/10 to-transparent transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`}></div>

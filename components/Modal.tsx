@@ -32,18 +32,17 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, colorCl
 
     // If a background image is present, we use a solid dark base and let the image + gradient handle the visuals.
     // Otherwise, we use the glassmorphism style.
-    const backgroundStyle = backgroundImage && !isImageModal 
-        ? 'bg-slate-900 border-white/20' 
+    const backgroundStyle = backgroundImage && !isImageModal
+        ? 'bg-slate-900 border-white/20'
         : 'bg-slate-900/90 backdrop-blur-xl border-white/10';
 
     const modalContent = (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm transition-all duration-300 animate-fade-in" onClick={onClose}>
-            <div 
-                className={`relative transition-transform transform scale-100 ${
-                    isImageModal 
+            <div
+                className={`relative transition-transform transform scale-100 ${isImageModal
                         ? 'flex items-center justify-center pointer-events-none' // Allow clicks to pass through empty space
-                        : `w-full ${maxWidth || 'max-w-lg'} ${backgroundStyle} border rounded-2xl shadow-2xl overflow-hidden`
-                }`} 
+                        : `w-full ${maxWidth || 'max-w-lg'} ${backgroundStyle} border rounded-2xl shadow-2xl overflow-hidden max-h-[85vh] overflow-y-auto no-scrollbar`
+                    }`}
                 onClick={(e) => e.stopPropagation()}
             >
                 {/* Optional Background Image */}
@@ -56,19 +55,19 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, colorCl
                     </div>
                 )}
 
-                <div className={`relative z-10 ${!isImageModal ? 'p-8' : 'pointer-events-auto'}`}>
-                    <button 
-                        onClick={onClose} 
+                <div className={`relative z-10 ${!isImageModal ? 'p-5 md:p-8' : 'pointer-events-auto'}`}>
+                    <button
+                        onClick={onClose}
                         className={`absolute ${isImageModal ? '-top-4 -right-4 z-50' : 'top-4 right-4'} text-slate-400 hover:text-white transition-colors z-20`}
                         aria-label="Close modal"
                     >
                         <i className={`ph-x${isImageModal ? '-circle' : ''} text-${isImageModal ? '4xl bg-slate-900 rounded-full text-white shadow-lg' : '2xl'}`}></i>
                     </button>
-                    
+
                     {!isImageModal && title && (
                         <h3 className={`text-2xl font-black mb-2 ${colorClass} tracking-tight drop-shadow-md`}>{title}</h3>
                     )}
-                    
+
                     {children}
                 </div>
             </div>

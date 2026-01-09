@@ -9,22 +9,22 @@ const RoadmapSection: React.FC = () => {
 
             <div className="max-w-screen-xl mx-auto relative z-10">
                 <div className="text-center mb-20">
-                     <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight mb-6">
+                    <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight mb-6">
                         Our Partnership <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-emerald-400">Roadmap</span>
                     </h2>
                     <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto font-light leading-relaxed">
                         A phased, risk-free approach to implementing digital healthcare in your LGU.
                     </p>
                 </div>
-                
+
                 <div className="relative">
                     {/* Vertical Line - Left on mobile, Center on desktop */}
                     <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-sky-500/50 via-teal-500/50 to-emerald-500/50 md:-translate-x-1/2"></div>
-                    
+
                     <div className="space-y-12 md:space-y-0">
-                        <TimelineItem 
-                            month="MONTH 1" 
-                            phase="Co-Planning & Mobilization" 
+                        <TimelineItem
+                            month="MONTH 1"
+                            phase="Co-Planning & Mobilization"
                             icon="ph-flag-check"
                             color="sky"
                             items={[
@@ -34,9 +34,9 @@ const RoadmapSection: React.FC = () => {
                             ]}
                             position="left"
                         />
-                        <TimelineItem 
-                            month="MONTHS 2-3" 
-                            phase="System Setup & Training" 
+                        <TimelineItem
+                            month="MONTHS 2-3"
+                            phase="System Setup & Training"
                             icon="ph-wrench"
                             color="cyan"
                             items={[
@@ -46,9 +46,9 @@ const RoadmapSection: React.FC = () => {
                             ]}
                             position="right"
                         />
-                        <TimelineItem 
-                            month="MONTHS 4-6" 
-                            phase="Phased Rollout & Go-Live" 
+                        <TimelineItem
+                            month="MONTHS 4-6"
+                            phase="Phased Rollout & Go-Live"
                             icon="ph-rocket-launch"
                             color="teal"
                             items={[
@@ -58,9 +58,9 @@ const RoadmapSection: React.FC = () => {
                             ]}
                             position="left"
                         />
-                        <TimelineItem 
-                            month="ONGOING" 
-                            phase="Operations & Evaluation" 
+                        <TimelineItem
+                            month="ONGOING"
+                            phase="Operations & Evaluation"
                             icon="ph-chart-line"
                             color="emerald"
                             items={[
@@ -77,21 +77,21 @@ const RoadmapSection: React.FC = () => {
     );
 };
 
-const TimelineItem: React.FC<{ 
-    month: string, 
-    phase: string, 
-    icon: string, 
-    color: string, 
-    items: string[], 
+const TimelineItem: React.FC<{
+    month: string,
+    phase: string,
+    icon: string,
+    color: string,
+    items: string[],
     position: 'left' | 'right'
 }> = ({ month, phase, icon, color, items, position }) => {
-    
+
     // Desktop: Alternating Layout
     // Mobile: All align right of the line
-    
+
     return (
         <div className={`relative md:flex items-center justify-between group ${position === 'left' ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-            
+
             {/* Spacer for desktop alignment - only visible on desktop */}
             <div className="hidden md:block w-5/12"></div>
 
@@ -109,11 +109,11 @@ const TimelineItem: React.FC<{
 
             {/* Content Card */}
             <div className={`
-                w-full pl-20 pr-0 md:w-5/12 md:p-0 
+                w-full pl-16 pr-0 md:w-5/12 md:p-0 
                 ${position === 'left' ? 'md:pr-12' : 'md:pl-12'}
             `}>
                 <div className={`
-                    glass p-8 rounded-3xl border border-slate-700/50 
+                    glass p-5 md:p-8 rounded-3xl border border-slate-700/50 
                     relative overflow-hidden group-hover:border-${color}-500/50 transition-all duration-300
                     shadow-lg hover:shadow-[0_0_30px_rgba(0,0,0,0.2)]
                     ${position === 'left' ? 'md:text-right' : 'md:text-left'} text-left

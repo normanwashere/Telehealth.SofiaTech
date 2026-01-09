@@ -120,8 +120,8 @@ const WinSection: React.FC<WinSectionProps> = ({ onNavigate }) => {
 
     return (
         <section className="animate-fade-in py-16 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden min-h-screen flex flex-col justify-center">
-             {/* Hidden Safelist for Tailwind to detect dynamic classes */}
-             <div className="hidden">
+            {/* Hidden Safelist for Tailwind to detect dynamic classes */}
+            <div className="hidden">
                 <div className="text-emerald-400 bg-emerald-500 bg-emerald-500/20 border-emerald-500"></div>
                 <div className="text-orange-400 bg-orange-500 bg-orange-500/20 border-orange-500"></div>
                 <div className="text-sky-400 bg-sky-500 bg-sky-500/20 border-sky-500"></div>
@@ -137,10 +137,10 @@ const WinSection: React.FC<WinSectionProps> = ({ onNavigate }) => {
             </div>
 
             <div className="max-w-screen-2xl mx-auto relative z-10 w-full">
-                
+
                 {/* Header */}
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight mb-4">
+                    <h2 className="text-3xl md:text-6xl font-black text-white tracking-tight mb-4">
                         The <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-sky-400">Total Victory</span>
                     </h2>
                     <p className="text-lg text-slate-400 max-w-2xl mx-auto font-light">
@@ -149,61 +149,88 @@ const WinSection: React.FC<WinSectionProps> = ({ onNavigate }) => {
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    
-                    {/* LEFT: Navigation / Stack */}
+
+                    {/* LEFT: Navigation / Stack - RESPONSIVE */}
                     <div className="lg:col-span-4 flex flex-col gap-3">
-                        {Object.entries(content).map(([key, data]) => {
-                            const isActive = activeLevel === key;
-                            const colors = getColorClasses(data.color);
-                            return (
-                                <button
-                                    key={key}
-                                    onClick={() => setActiveLevel(key as ImpactLevel)}
-                                    className={`
+                        {/* Mobile Horizontal Scroll Tabs */}
+                        <div className="flex lg:hidden overflow-x-auto snap-x snap-mandatory gap-2 pb-4 -mx-4 px-4 no-scrollbar mb-4">
+                            {Object.entries(content).map(([key, data]) => {
+                                const isActive = activeLevel === key;
+                                const colors = getColorClasses(data.color);
+                                return (
+                                    <button
+                                        key={key}
+                                        onClick={() => setActiveLevel(key as ImpactLevel)}
+                                        className={`
+                                            flex-shrink-0 snap-start px-4 py-2 rounded-full border text-sm font-bold whitespace-nowrap transition-all duration-300
+                                            ${isActive
+                                                ? `${colors.bg} text-white ${colors.border}`
+                                                : 'bg-slate-900 border-slate-700 text-slate-400'
+                                            }
+                                        `}
+                                    >
+                                        <i className={`ph ${data.icon} mr-2`}></i>
+                                        {data.title}
+                                    </button>
+                                );
+                            })}
+                        </div>
+
+                        {/* Desktop Vertical List */}
+                        <div className="hidden lg:flex flex-col gap-3">
+                            {Object.entries(content).map(([key, data]) => {
+                                const isActive = activeLevel === key;
+                                const colors = getColorClasses(data.color);
+                                return (
+                                    <button
+                                        key={key}
+                                        onClick={() => setActiveLevel(key as ImpactLevel)}
+                                        className={`
                                         group relative overflow-hidden p-6 rounded-2xl text-left transition-all duration-300 border
-                                        ${isActive 
-                                            ? `bg-slate-800 ${colors.border} shadow-[0_0_30px_rgba(0,0,0,0.3)] scale-[1.02]` 
-                                            : 'bg-slate-900/50 border-slate-800 hover:bg-slate-800 hover:border-slate-700'
-                                        }
+                                        ${isActive
+                                                ? `bg-slate-800 ${colors.border} shadow-[0_0_30px_rgba(0,0,0,0.3)] scale-[1.02]`
+                                                : 'bg-slate-900/50 border-slate-800 hover:bg-slate-800 hover:border-slate-700'
+                                            }
                                     `}
-                                >
-                                    <div className={`absolute left-0 top-0 bottom-0 w-1.5 transition-colors duration-300 ${isActive ? colors.bg : 'bg-transparent'}`}></div>
-                                    
-                                    <div className="flex items-center justify-between">
-                                        <div>
-                                            <h4 className={`text-lg font-bold transition-colors ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-slate-200'}`}>
-                                                {data.title}
-                                            </h4>
-                                            <p className={`text-xs uppercase tracking-wider font-semibold mt-1 transition-colors ${isActive ? colors.text : 'text-slate-600'}`}>
-                                                {data.subtitle}
-                                            </p>
-                                        </div>
-                                        <div className={`
+                                    >
+                                        <div className={`absolute left-0 top-0 bottom-0 w-1.5 transition-colors duration-300 ${isActive ? colors.bg : 'bg-transparent'}`}></div>
+
+                                        <div className="flex items-center justify-between">
+                                            <div>
+                                                <h4 className={`text-lg font-bold transition-colors ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-slate-200'}`}>
+                                                    {data.title}
+                                                </h4>
+                                                <p className={`text-xs uppercase tracking-wider font-semibold mt-1 transition-colors ${isActive ? colors.text : 'text-slate-600'}`}>
+                                                    {data.subtitle}
+                                                </p>
+                                            </div>
+                                            <div className={`
                                             w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300
                                             ${isActive ? `${colors.bgLight} ${colors.text}` : 'bg-slate-800 text-slate-600 group-hover:bg-slate-700 group-hover:text-slate-400'}
                                         `}>
-                                            <i className={`ph ${data.icon} text-xl`}></i>
+                                                <i className={`ph ${data.icon} text-xl`}></i>
+                                            </div>
                                         </div>
-                                    </div>
-                                </button>
-                            );
-                        })}
+                                    </button>
+                                );
+                            })}
+                        </div>
                     </div>
 
                     {/* RIGHT: Active Content Display */}
                     <div className="lg:col-span-8 space-y-6">
                         <div className="glass-strong p-8 md:p-12 rounded-3xl border border-white/5 relative overflow-hidden min-h-[500px] flex flex-col">
-                            
+
                             {/* Animated Background Gradient for Active Card */}
                             <div className={`absolute -top-24 -right-24 w-96 h-96 ${activeColors.bgLight} rounded-full blur-[80px] transition-colors duration-500`}></div>
 
                             {/* Key Stats Row */}
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10 relative z-10">
+                            <div className="grid grid-cols-3 gap-3 md:gap-4 mb-6 md:mb-10 relative z-10">
                                 {activeContent.stats.map((stat, idx) => (
-                                    <div key={idx} className="bg-slate-950/50 p-5 rounded-2xl border border-white/5 backdrop-blur-sm hover:border-white/10 transition-colors">
-                                        <p className={`text-3xl md:text-4xl font-black ${activeColors.text} mb-1`}>{stat.value}</p>
-                                        <p className="text-white font-bold text-sm">{stat.label}</p>
-                                        <p className="text-slate-500 text-xs mt-1">{stat.sub}</p>
+                                    <div key={idx} className="bg-slate-950/50 p-3 md:p-5 rounded-xl md:rounded-2xl border border-white/5 backdrop-blur-sm hover:border-white/10 transition-colors">
+                                        <p className={`text-xl sm:text-2xl md:text-4xl font-black ${activeColors.text} mb-1 leading-tight`}>{stat.value}</p>
+                                        <p className="text-white font-bold text-xs md:text-sm leading-tight">{stat.label}</p>
+                                        <p className="text-slate-500 text-[10px] md:text-xs mt-1 leading-tight hidden sm:block">{stat.sub}</p>
                                     </div>
                                 ))}
                             </div>
@@ -220,25 +247,25 @@ const WinSection: React.FC<WinSectionProps> = ({ onNavigate }) => {
                             </div>
 
                             {/* The Bottom Line "Win" */}
-                            <div className={`relative z-10 mt-auto ${activeColors.bgLight} border ${activeColors.border} border-opacity-20 p-6 rounded-2xl`}>
-                                <p className={`text-xs font-bold ${activeColors.text} uppercase tracking-widest mb-2`}>
+                            <div className={`relative z-10 mt-auto ${activeColors.bgLight} border ${activeColors.border} border-opacity-20 p-4 md:p-6 rounded-2xl`}>
+                                <p className={`text-xs md:text-sm font-bold ${activeColors.text} uppercase tracking-widest mb-1 md:mb-2`}>
                                     The Bottom Line
                                 </p>
-                                <p className="text-xl md:text-2xl font-bold text-white italic">
+                                <p className="text-xl md:text-2xl font-bold text-white italic leading-tight">
                                     "{activeContent.win}"
                                 </p>
                             </div>
                         </div>
 
-                         {/* Social Pulse Section */}
-                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        {/* Social Pulse Section */}
+                        <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-4 px-4 md:grid md:grid-cols-3 md:overflow-visible md:pb-0 md:px-0 md:mx-0 no-scrollbar">
                             {activeContent.comments.map((comment, i) => (
-                                <div 
-                                    key={i} 
-                                    className="animate-fade-in h-full relative hover:z-50"
-                                    style={{animationDelay: `${i * 150}ms`, animationFillMode: 'both'}}
+                                <div
+                                    key={i}
+                                    className="min-w-[80vw] md:min-w-0 snap-center animate-fade-in h-full relative hover:z-50"
+                                    style={{ animationDelay: `${i * 150}ms`, animationFillMode: 'both' }}
                                 >
-                                    <div className="glass p-5 rounded-2xl border border-slate-700/50 flex flex-col h-full hover:scale-[2] hover:bg-slate-950/[0.98] hover:backdrop-blur-3xl hover:border-emerald-500/50 transition-all duration-500 shadow-sm hover:shadow-[0_0_80px_rgba(0,0,0,0.9)] cursor-default origin-center">
+                                    <div className="glass p-5 rounded-2xl border border-slate-700/50 flex flex-col h-full hover:scale-[1.02] md:hover:scale-[1.5] hover:bg-slate-950/[0.98] hover:backdrop-blur-3xl hover:border-emerald-500/50 transition-all duration-500 shadow-sm hover:shadow-[0_0_80px_rgba(0,0,0,0.9)] cursor-default origin-center">
                                         <div className="flex items-center gap-3 mb-3">
                                             <div className={`w-8 h-8 rounded-full ${activeColors.bgLight} flex items-center justify-center ${activeColors.text}`}>
                                                 <i className="ph ph-user-circle text-xl"></i>
@@ -281,9 +308,9 @@ const WinSection: React.FC<WinSectionProps> = ({ onNavigate }) => {
                         </div>
                     </div>
                     <h2 className="text-4xl md:text-5xl font-black text-white mb-8 leading-tight">
-                        Turn this vision <br/> into your legacy.
+                        Turn this vision <br /> into your legacy.
                     </h2>
-                    <button 
+                    <button
                         onClick={() => onNavigate('proposal')}
                         className="bg-white text-slate-900 hover:bg-emerald-50 text-lg font-bold py-4 px-10 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-xl inline-flex items-center gap-2"
                     >
