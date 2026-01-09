@@ -48,7 +48,7 @@ const Layout: React.FC = () => {
             </div>
 
             {/* Main Content Area with Transitions */}
-            <main className="relative z-10 pb-24 min-h-screen">
+            <main className="relative z-10 pb-32 min-h-screen">
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={location.pathname}
