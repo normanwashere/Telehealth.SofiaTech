@@ -17,7 +17,7 @@ const WinSection: React.FC<WinSectionProps> = ({ onNavigate }) => {
             color: "emerald",
             icon: "ph-heart",
             stats: [
-                { label: "Annual Savings", value: "₱13,200", sub: "per family on transport & fees" },
+                { label: "Annual Savings", value: "₱11,000", sub: "per family on transport & fees" },
                 { label: "Response Time", value: "< 15m", sub: "to connect with a doctor" },
                 { label: "Access Cost", value: "₱0", sub: "zero balance billing" }
             ],

@@ -232,7 +232,7 @@ const ProposalSection: React.FC<ProposalSectionProps> = ({ activeLgu, onLguChang
             return 899;
         } else {
             // Family Plan Pricing
-            // Base assumes roughly 3.5x multiplier of individual for 6 pax value
+            // Base assumes roughly 3.5x multiplier of individual for 5 pax value
             if (numUnits < 5000) return null; // Lowered threshold for families to 5k
             if (numUnits <= 20000) return 3499;
             if (numUnits <= 30000) return 3299;
@@ -252,6 +252,7 @@ const ProposalSection: React.FC<ProposalSectionProps> = ({ activeLgu, onLguChang
     const dailyCost = bundlePrice / 365;
     const monthlyCost = bundlePrice / 12;
 
+    // Traditional Costs Breakdown
     // Traditional Costs Breakdown
     const visitsPerYear = planType === 'individual' ? 12 : 60; // 12 for individual, 60 shared for family
     const costPerConsult = 500;
@@ -565,7 +566,7 @@ const ProposalSection: React.FC<ProposalSectionProps> = ({ activeLgu, onLguChang
                                                 {planType === 'individual' ? '12 Video Consults' : '60 Video Consults'}
                                             </p>
                                             <p className="text-xs text-slate-300 font-medium tracking-wide">
-                                                {planType === 'individual' ? 'Annual access to GPs' : 'Shared by 6 Family Members'}
+                                                {planType === 'individual' ? 'Annual access to GPs' : 'Shared by 5 Family Members'}
                                             </p>
                                         </div>
                                     </div>
@@ -661,7 +662,7 @@ const ProposalSection: React.FC<ProposalSectionProps> = ({ activeLgu, onLguChang
                                             Daily Cost {planType === 'family' && <span className="text-emerald-500 opacity-70">(Per Person)</span>}
                                         </span>
                                         <span className="text-3xl font-black text-white">
-                                            ₱{(planType === 'family' ? dailyCost / 6 : dailyCost).toFixed(2)}
+                                            ₱{(planType === 'family' ? dailyCost / 5 : dailyCost).toFixed(2)}
                                         </span>
                                     </div>
                                     <div className="flex-1 bg-slate-950 p-4 rounded-2xl border border-slate-800 relative overflow-hidden group">
@@ -672,7 +673,7 @@ const ProposalSection: React.FC<ProposalSectionProps> = ({ activeLgu, onLguChang
                                             Monthly Cost {planType === 'family' && <span className="text-emerald-400 opacity-70">(Per Person)</span>}
                                         </span>
                                         <span className="text-3xl font-black text-emerald-400">
-                                            ₱{(planType === 'family' ? monthlyCost / 6 : monthlyCost).toFixed(0)}
+                                            ₱{(planType === 'family' ? monthlyCost / 5 : monthlyCost).toFixed(0)}
                                         </span>
                                     </div>
                                 </div>
@@ -757,7 +758,7 @@ const ProposalSection: React.FC<ProposalSectionProps> = ({ activeLgu, onLguChang
                                             <span className="text-xs text-emerald-400 font-medium">
                                                 {planType === 'individual'
                                                     ? `${(units / (totalVoters || 1) * 100).toFixed(1)}% of Voters`
-                                                    : `~${(units * 6).toLocaleString()} Lives Covered`
+                                                    : `~${(units * 5).toLocaleString()} Lives Covered`
                                                 }
                                             </span>
                                         </div>
